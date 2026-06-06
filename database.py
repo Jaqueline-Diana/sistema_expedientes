@@ -1,13 +1,15 @@
+import os
 import mysql.connector
 
 # =============================================
 # CAMBIA ESTOS DATOS CON LOS TUYOS
 # =============================================
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "1234",  # <-- Pon tu contraseña aquí
-    "database": "sistema_expedientes"
+    "host": os.environ.get("DB_HOST", "localhost"),
+    "user": os.environ.get("DB_USER", "root"),
+    "password": os.environ.get("DB_PASSWORD", "1234"),
+    "database": os.environ.get("DB_NAME", "sistema_expedientes"),
+    "port": int(os.environ.get("DB_PORT", 3306))
 }
 
 def get_connection():
