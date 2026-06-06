@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Registrar nuevo trabajador</h2>
+
+<form method="POST" class="formulario">
+    <div class="campo">
+        <label>Nombre(s)</label>
+        <input type="text" name="nombre" required placeholder="Ej. Juan Manuel">
+    </div>
+    <div class="campo">
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" required placeholder="Ej. López López">
+    </div>
+    <div class="campo">
+        <label>Puesto</label>
+        <input type="text" name="puesto" required placeholder="Ej. Servidor de la nación">
+    </div>
+    <div class="campo">
+        <label>Fecha de contratación</label>
+        <input type="date" name="fecha_contratacion" required>
+    </div>
+    <div class="acciones">
+        <button type="submit" class="btn btn-primary">Guardar trabajador</button>
+        <a href="{{ url_for('listar_personal') }}" class="btn btn-secundario">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

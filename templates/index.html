@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bienvenida">
+    <h1>Sistema de Control de Expedientes</h1>
+    <p>Secretaría de Bienestar – Delegación Veracruz</p>
+    <div class="tarjeta-stat">
+        <span class="stat-numero">{{ total }}</span>
+        <span class="stat-label">Trabajadores registrados</span>
+    </div>
+    <div class="acciones">
+        <a href="{{ url_for('listar_personal') }}" class="btn btn-primary">Ver Personal</a>
+        <a href="{{ url_for('nuevo_personal') }}" class="btn btn-secundario">+ Registrar Trabajador</a>
+    </div>
+</div>
+{% endblock %}

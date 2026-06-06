@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #F7F8FA;
+    color: #1a1a2e;
+    font-size: 14px;
+}
+
+/* ── NAV ── */
+nav {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.nav-brand {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #6B1A2A;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.3px;
+}
+.nav-brand::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background: linear-gradient(180deg, #6B1A2A, #C8A951);
+    border-radius: 3px;
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.nav-links a {
+    color: #555;
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: all 0.15s;
+}
+.nav-links a:hover { background: #f5f5f5; color: #6B1A2A; }
+.nav-links a:last-child {
+    background: #6B1A2A;
+    color: white;
+    margin-left: 6px;
+}
+.nav-links a:last-child:hover { background: #4e1220; }
+
+/* ── CONTAINER ── */
+.container { max-width: 1000px; margin: 36px auto; padding: 0 24px; }
+
+/* ── BIENVENIDA ── */
+.bienvenida { text-align: center; padding: 60px 20px; }
+.bienvenida h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6B1A2A;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+.bienvenida p { color: #888; margin-bottom: 36px; font-size: 0.95rem; }
+
+.tarjeta-stat {
+    display: inline-block;
+    background: white;
+    border-radius: 16px;
+    padding: 28px 52px;
+    margin-bottom: 36px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-left: 4px solid #C8A951;
+}
+.stat-numero { display: block; font-size: 3rem; font-weight: 700; color: #6B1A2A; line-height: 1; }
+.stat-label { color: #999; font-size: 0.85rem; margin-top: 6px; display: block; }
+
+/* ── BOTONES ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.87rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    letter-spacing: 0.1px;
+}
+.btn-primary { background: #6B1A2A; color: white; }
+.btn-primary:hover { background: #4e1220; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(107,26,42,0.3); }
+.btn-secundario { background: #f0f0f0; color: #444; }
+.btn-secundario:hover { background: #e4e4e4; }
+.btn-small {
+    padding: 5px 14px;
+    font-size: 0.82rem;
+    background: #fff;
+    color: #6B1A2A;
+    border: 1.5px solid #6B1A2A;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.15s;
+}
+.btn-small:hover { background: #6B1A2A; color: white; }
+.acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+
+/* ── ALERTAS ── */
+.alerta {
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.alerta-success { background: #f0faf4; color: #1a7a40; border: 1px solid #b7e4c7; }
+.alerta-warning { background: #fffbf0; color: #92600a; border: 1px solid #f5d78e; }
+
+/* ── TABLAS ── */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    margin-bottom: 24px;
+}
+th {
+    background: #6B1A2A;
+    color: rgba(255,255,255,0.9);
+    padding: 13px 18px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+td { padding: 13px 18px; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; color: #333; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafafa; }
+.fila-entregado td { background: #f6fcf8; }
+.fila-sin_firma td { background: #fffdf0; }
+.fila-pendiente td { background: #fff8f8; }
+
+/* ── FORMULARIOS ── */
+.formulario {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    max-width: 520px;
+}
+.campo { margin-bottom: 20px; }
+.campo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+    font-size: 0.85rem;
+    color: #444;
+    letter-spacing: 0.1px;
+}
+.campo input, .campo select, .select-estado {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #e4e4e4;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border 0.15s;
+    background: #fafafa;
+}
+.campo input:focus, .campo select:focus, .select-estado:focus {
+    outline: none;
+    border-color: #6B1A2A;
+    background: white;
+}
+
+/* ── ENCABEZADO SECCIÓN ── */
+.encabezado-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+.encabezado-seccion h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: -0.3px;
+}
+.puesto-badge {
+    background: #fdf3e7;
+    color: #92600a;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #f5d78e;
+}
+
+h3 {
+    margin: 28px 0 14px;
+    color: #444;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+.vacio {
+    color: #bbb;
+    font-style: italic;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+}
+
+.btn-danger {
+    background: #fff;
+    color: #c0392b;
+    border: 1.5px solid #c0392b;
+    padding: 5px 14px;
+    font-size: 0.82rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.btn-danger:hover { background: #c0392b; color: white; }

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="encabezado-seccion">
+    <h2>Personal Registrado</h2>
+    <a href="{{ url_for('nuevo_personal') }}" class="btn btn-primary">+ Nuevo trabajador</a>
+</div>
+
+{% if trabajadores %}
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre completo</th>
+            <th>Puesto</th>
+            <th>Fecha de contratación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in trabajadores %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.apellidos }}, {{ t.nombre }}</td>
+            <td>{{ t.puesto }}</td>
+            <td>{{ t.fecha_contratacion }}</td>
+            <td style="display:flex; gap:8px;">
+                <a href="{{ url_for('ver_expediente', personal_id=t.id) }}" class="btn-small">Ver expediente</a>
+                <form method="POST" action="{{ url_for('eliminar_personal', personal_id=t.id) }}" onsubmit="return confirm('¿Seguro que deseas eliminar a {{ t.nombre }} {{ t.apellidos }}?')">
+                    <button type="submit" class="btn-small btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="vacio">No hay trabajadores registrados aún.</p>
+{% endif %}
+{% endblock %}

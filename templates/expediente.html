@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="encabezado-seccion">
+    <h2>Expediente: {{ trabajador.apellidos }}, {{ trabajador.nombre }}</h2>
+    <span class="puesto-badge">{{ trabajador.puesto }}</span>
+</div>
+
+{% if pendientes %}
+<div class="alerta alerta-warning">
+    ⚠️ <strong>{{ pendientes|length }} documento(s) pendiente(s)</strong> sin entregar o sin firma.
+</div>
+{% else %}
+<div class="alerta alerta-success">
+    ✅ Todos los documentos únicos están entregados.
+</div>
+{% endif %}
+
+<form method="POST">
+    <!-- DOCUMENTOS ÚNICOS -->
+    <h3>Documentos generales</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in docs_unicos %}
+            <tr class="fila-{{ doc.estado }}">
+                <td>{{ doc.nombre }}</td>
+                <td>
+                    <select name="estado_{{ doc.id }}" class="select-estado">
+                        <option value="pendiente" {% if doc.estado == 'pendiente' %}selected{% endif %}>⏳ Pendiente</option>
+                        <option value="entregado" {% if doc.estado == 'entregado' %}selected{% endif %}>✅ Entregado</option>
+                        <option value="sin_firma" {% if doc.estado == 'sin_firma' %}selected{% endif %}>✍️ Sin firma</option>
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- DOCUMENTOS MENSUALES -->
+    <h3>Agregar documentos mensuales</h3>
+    <div class="campo">
+        <label>Mes a registrar</label>
+        <select name="mes" class="select-estado">
+            <option value="">-- Selecciona un mes --</option>
+            {% for m in ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"] %}
+            <option value="{{ m }}">{{ m }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% for doc in catalogo_mensual %}
+    <div class="campo">
+        <label>{{ doc.nombre }}</label>
+        <select name="mensual_{{ doc.id }}" class="select-estado">
+            <option value="pendiente">⏳ Pendiente</option>
+            <option value="entregado">✅ Entregado</option>
+            <option value="sin_firma">✍️ Sin firma</option>
+        </select>
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+</form>
+
+<!-- HISTORIAL MENSUAL -->
+{% if docs_mensuales %}
+<h3>Historial de documentos mensuales</h3>
+<table>
+    <thead>
+        <tr><th>Mes</th><th>Documento</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+        {% for doc in docs_mensuales %}
+        <tr class="fila-{{ doc.estado }}">
+            <td>{{ doc.mes }}</td>
+            <td>{{ doc.nombre }}</td>
+            <td>
+                {% if doc.estado == 'entregado' %}✅ Entregado
+                {% elif doc.estado == 'sin_firma' %}✍️ Sin firma
+                {% else %}⏳ Pendiente{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<br>
+<a href="{{ url_for('listar_personal') }}" class="btn btn-secundario">← Volver</a>
+{% endblock %}
