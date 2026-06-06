@@ -17,17 +17,6 @@ def get_connection():
     return conn
 
 def inicializar_db():
-    # Primero crear la base de datos si no existe
-    conn = mysql.connector.connect(
-        host=DB_CONFIG["host"],
-        user=DB_CONFIG["user"],
-        password=DB_CONFIG["password"]
-    )
-    cursor = conn.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS sistema_expedientes")
-    conn.commit()
-    conn.close()
-
     # Ahora crear las tablas
     conn = get_connection()
     cursor = conn.cursor()
