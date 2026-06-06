@@ -5,10 +5,10 @@ import mysql.connector
 # CAMBIA ESTOS DATOS CON LOS TUYOS
 # =============================================
 DB_CONFIG = {
-    "host": os.environ.get("DB_HOST", "localhost"),
+    "host": os.environ.get("DB_HOST", "mysql.railway.internal"),
     "user": os.environ.get("DB_USER", "root"),
-    "password": os.environ.get("DB_PASSWORD", "1234"),
-    "database": os.environ.get("DB_NAME", "sistema_expedientes"),
+    "password": os.environ.get("DB_PASSWORD", "gVQqcWlozujohXrwhHfjuuzFBajtLvZB"),
+    "database": os.environ.get("DB_NAME", "railway"),
     "port": int(os.environ.get("DB_PORT", 3306))
 }
 
